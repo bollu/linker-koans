@@ -12,3 +12,8 @@ of the linker.
   [Reference on symbol resolution](https://www.airs.com/blog/archives/49) is the only place
   I've ever seen this documented.
 
+- Explanation of CRT files. This shows up when one tries to link a C executable manually.
+  [Reference on the different `*crt*` files](https://dev.gentoo.org/~vapier/crt.txt).
+
+- [Archive linking algorithm](https://web.archive.org/web/20180627210132/http://webpages.charter.net/ppluzhnikov/linker.html). This reference explains how the linker builds the graph of archives that are to be included in the final
+  executable, as well as why the linker is order sensitive.
