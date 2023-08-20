@@ -1,0 +1,14 @@
+# Examples to play with the linker
+
+This repo was born out of deep frustration in trying to understand
+precisely how linkers work. The project contains folders,
+each of which explores a *single* idea in the working
+of the linker.
+
+
+#### References:
+
+- Airs - Ian Lance Taylor. Incredible blog post series by the author of `gold`.
+  [Reference on symbol resolution](https://www.airs.com/blog/archives/49) is the only place
+  I've ever seen this documented.
+
