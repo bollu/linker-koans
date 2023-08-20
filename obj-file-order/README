@@ -1,0 +1,16 @@
+https://stackoverflow.com/questions/36447919/why-does-the-gcc-linker-behave-differently-with-a-files-and-o-files
+
+> As far as the linker is concerned, the difference between a static library
+> and an object file in the linkage sequence is:
+>
+> An object file is to be
+> linked, just because it is an object file, whether or not it provides
+> definitions of any symbols that the executable needs. If you don't want an
+> object file to be linked, don't mention it to the linker. 
+>
+> A static library
+> is an archive of object files that are to be extracted from the library and
+> linked if required, where an object file in a library is required if and only
+> if it provides a definition of at least one hitherto undefined symbol that
+> the linker has observed in an object file or library appearing earlier in the
+> linkage sequence.
