@@ -1,0 +1,39 @@
+https://web.archive.org/web/20180627210132/http://webpages.charter.net/ppluzhnikov/linker.html
+
+### Succinct Explanation:
+
+the linker algorithm is this:
+
+```py
+def link(archives: List[Library]):
+  unresolved_refs = set(["_start"])
+  resolved_refs = set()
+  for archive in archives:
+    # if we have a ref in this archive that is 
+    # currently unresolved, then this archive is useful.
+    is_used = 
+     any([ref in unresolved_ref
+           for ref in def # get all references from def.
+             for def in archive])
+    if not is_used: continue
+    # INVARIANT: if we enter here, this this means that *at least*
+    #   one unresolved ref will be resolved.
+    for def in archive:
+      # we only add those defs that were unresolved.
+      if def not in unresolved_refs: continue
+      resolved_refs.add(def) # this defn is resolved.
+      unresolved_refs.remove(def) # this defn is resolved.
+      for ref in def:
+        if ref not in resolved_refs: # we have not resolved this ref yet.
+          unresolved_refs.add(def) # add to resolution worklist.
+  
+```
+
+
+- This means we might need to link twice to resolve call chains:
+
+```
+gcc main.o -lfoo -lbar -lfoo -lbar -lfoo
+```
+
+- We can also use `--start-group` and `--end-group` to demarcate such mutual inclusion.
